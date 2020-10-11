@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Router} from '@reach/router'; //allows us to route to pages
+
+//Views
+import SearchBar from "./views/SearchBar";
+
+//Components
+import People from "./components/People";
+import Planets from "./components/Planets";
+import Error from "./components/Error";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <SearchBar/>
+      <Router>
+        
+        <People path='/people/:id'/> 
+        <Planets path='/planets/:id'/>
+        <Error path="/error" />
+
+      </Router>
+
     </div>
   );
 }
